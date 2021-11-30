@@ -1,25 +1,32 @@
 
-    $(document).ready(function(){
-      alert("Hello from index.js");
-    });
+var outputFunction = document.getElementById("outputFunction");
+var getPuns = document.getElementById("getPuns");
+var URLENDPOINT = 'https://bmqu6eztu2.execute-api.us-east-1.amazonaws.com/default/testEvent';
 
-    $(function() {
-    $('#getPuns').click(function() {
-        event.preventDefault();
-        var form_data = new FormData($('#myform')[0]);
-        console.log(form_data);
-        $.ajax({
-            type: 'GET',
-            url: 'https://bmqu6eztu2.execute-api.us-east-1.amazonaws.com/default/testEvent',
-            data: form_data,
-            contentType: false,
-            processData: false,
-        }).done(function(data, textStatus, jqXHR){
-            htmlCode = '<h1>Ajax Generator</h1>';
-            alert('htmlCode');
-            $("#outputFunction").html(htmlCode);
-        }).fail(function(data){
-            alert('error!');
-        });
-    });
+getPuns.addEventListener("click", function(){
+
+        var inputWord = $('#inputWord').val()
+        console.log(inputWord)
+
+        urlEndpoint = URLENDPOINT + 'user_id?user_id=' + inputWord
+        console.log(urlEndpoint)
+
+       var punRequest = new XMLHttpRequest();
+        punRequest.open('GET', urlEndpoint);
+
+        punRequest.onload = function(){
+            var punData = punRequest.responseText;
+            console.log(punData);
+            renderHTML(punData)
+            };
+
+        //punRequest.send();
+
 });
+
+
+function renderHTML(data){
+    var htmlString = "";
+    htmlString += "<p>" + data + "</p>";
+    outputFunction.insertAdjacentHTML('beforeend', htmlString)
+}
