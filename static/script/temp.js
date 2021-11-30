@@ -18,6 +18,6 @@ getPuns.addEventListener("click", function(){
 
 function renderHTML(data){
     var htmlString = "";
-    htmlString += "<p>" + data[i].name + "is a " + data[i].species + "</p>";
+    htmlString += "<p>" + data + "</p>";
     outputFunction.insertAdjacentHTML('beforeend', htmlString)
 }
