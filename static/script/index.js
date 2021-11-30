@@ -8,7 +8,7 @@ getPuns.addEventListener("click", function(){
         var inputWord = $('#inputWord').val()
         console.log(inputWord)
 
-        urlEndpoint = URLENDPOINT + 'user_id?user_id=' + inputWord
+        urlEndpoint = URLENDPOINT + '?user_id=' + inputWord
         console.log(urlEndpoint)
 
        var punRequest = new XMLHttpRequest();
