@@ -14,7 +14,7 @@
         }).done(function(data, textStatus, jqXHR){
 
             htmlCode = '<h1>Ajax Generator</h1>'
-            $("#tableFunctions").html(htmlCode);
+            $("#outputFunction").html(htmlCode);
 
 
 
