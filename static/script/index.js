@@ -20,7 +20,7 @@ getPuns.addEventListener("click", function(){
             renderHTML(punData)
             };
 
-        //punRequest.send();
+        punRequest.send();
 
 });
 
