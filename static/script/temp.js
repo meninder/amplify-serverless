@@ -1,17 +1,26 @@
 
-var outputFunction = document.getElementById("outputFunction")
-var getPuns = document.getElementById("getPuns")
+var outputFunction = document.getElementById("outputFunction");
+var getPuns = document.getElementById("getPuns");
+var URLENDPOINT = 'https://bmqu6eztu2.execute-api.us-east-1.amazonaws.com/default/testEvent';
 
 getPuns.addEventListener("click", function(){
-        var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'https://bmqu6eztu2.execute-api.us-east-1.amazonaws.com/default/testEvent');
-    ourRequest.onload = function(){
-        var ourData = ourRequest.responseText;
-        console.log(ourData);
-        renderHTML(ourData)
-    };
 
-    ourRequest.send();
+        var inputWord = $('#inputWord').val()
+        console.log(inputWord)
+
+        urlEndpoint = URLENDPOINT + 'user_id?user_id=' + inputWord
+        console.log(urlEndpoint)
+
+       var punRequest = new XMLHttpRequest();
+        punRequest.open('GET', urlEndpointQuery);
+
+        punRequest.onload = function(){
+            var punData = punRequest.responseText;
+            console.log(punData);
+            renderHTML(punData)
+            };
+
+        //punRequest.send();
 
 });
 
