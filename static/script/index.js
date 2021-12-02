@@ -1,7 +1,8 @@
 
 var outputFunction = document.getElementById("outputFunction");
 var getPuns = document.getElementById("getPuns");
-var URLENDPOINT = 'https://bmqu6eztu2.execute-api.us-east-1.amazonaws.com/default/testEvent';
+//var URLENDPOINT = 'https://bmqu6eztu2.execute-api.us-east-1.amazonaws.com/default/testEvent';
+var URLENDPOINT = 'https://adhz5qf9f3.execute-api.us-east-1.amazonaws.com/default/test-12-2';
 
 getPuns.addEventListener("click", function(){
 
