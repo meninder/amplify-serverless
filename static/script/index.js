@@ -1,36 +1,36 @@
 
 var outputFunction = document.getElementById("outputFunction");
 var getPuns = document.getElementById("getPuns");
-//var URLENDPOINT = 'https://94xn5a9ye5.execute-api.us-east-1.amazonaws.com/default/getPuns';
-var URLENDPOINT = 'https://adhz5qf9f3.execute-api.us-east-1.amazonaws.com/default/test-12-2';
+var URLENDPOINT = 'https://abofr4qdyd.execute-api.us-east-1.amazonaws.com/default/getPuns';
 
 getPuns.addEventListener("click", function(){
 
-        var inputWord = $('#inputWord').val()
-        console.log(inputWord)
+    var inputWord = $('#inputWord').val()
+    console.log(inputWord)
+    urlEndpoint = URLENDPOINT + '?input_word=' + inputWord
+    //urlEndpoint = URLENDPOINT
+    console.log(urlEndpoint)
 
-        //urlEndpoint = URLENDPOINT + '?input_word=' + inputWord
-        urlEndpoint = URLENDPOINT
-        console.log(urlEndpoint)
+    var punRequest = new XMLHttpRequest();
+    punRequest.open('GET', urlEndpoint);
 
-       var punRequest = new XMLHttpRequest();
-       punRequest.open('GET', urlEndpoint);
+    punRequest.onload = function(){
 
-        punRequest.onload = function(){
-            var punData = JSON.parse(punRequest.responseText);
-            console.log(punData);
-            //console.log(punData.0);
-            console.log(punData[0]);
-            renderHTML(punData);
-            };
 
-        punRequest.send();
+        var punData = JSON.parse(punRequest.responseText);
+        console.log(punData);
+        var htmlString = ''
+        for (var key in punData) {
+            htmlString += '<p>'
+            htmlString += punData[key][0]
+            htmlString += '; orginal: ' + punData[key][1]
+            htmlString += '</p>'
+            }
+        outputFunction.insertAdjacentHTML('beforeend', htmlString)
+
+        };
+
+
+    punRequest.send();
 
 });
-
-
-function renderHTML(data){
-    var htmlString = "";
-    htmlString += "<p>" + data + "</p>";
-    outputFunction.insertAdjacentHTML('beforeend', htmlString)
-}
