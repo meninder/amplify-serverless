@@ -1,15 +1,14 @@
 
 var outputFunction = document.getElementById("outputFunction");
 var getPuns = document.getElementById("getPuns");
-//var URLENDPOINT = 'https://bmqu6eztu2.execute-api.us-east-1.amazonaws.com/default/testEvent';
-var URLENDPOINT = 'https://adhz5qf9f3.execute-api.us-east-1.amazonaws.com/default/test-12-2';
+var URLENDPOINT = 'https://94xn5a9ye5.execute-api.us-east-1.amazonaws.com/default/getPuns';
 
 getPuns.addEventListener("click", function(){
 
         var inputWord = $('#inputWord').val()
         console.log(inputWord)
 
-        urlEndpoint = URLENDPOINT + '?user_id=' + inputWord
+        urlEndpoint = URLENDPOINT + '?input_word=' + inputWord
         console.log(urlEndpoint)
 
        var punRequest = new XMLHttpRequest();
