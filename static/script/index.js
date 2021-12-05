@@ -41,13 +41,28 @@ btnGetPuns.addEventListener("click", function(){
     punRequest.onload = function(){
         var punData = JSON.parse(punRequest.responseText);
         console.log(punData);
-        var htmlString = ''
+        var htmlString = `<table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"> Pun </th>
+                    <th scope="col"> Original </th>
+                </tr>
+            </thead>
+            <tbody>`
+
         for (var key in punData) {
-            htmlString += '<p>'
+            htmlString += '<tr>'
+            htmlString += '<td>'
             htmlString += punData[key][0]
-            htmlString += '; orginal: ' + punData[key][1]
-            htmlString += '</p>'
+            htmlString += '</td>'
+            htmlString += '<td>'
+            htmlString += punData[key][1]
+            htmlString += '</td>'
+            htmlString += '</tr>'
+
             }
+        htmlString += '</tbody></table>'
+        console.log(htmlString)
         outputData.innerHTML = htmlString
         };
     punRequest.send();

@@ -15,52 +15,44 @@
 <body>
 
 <div class="container">
-  <div class="row">
-	  <!-- Beer Pun Generator -->
-    <div class="col text-center" id="beer-pun-generator">
+	<!-- Beer Pun Generator -->
+	<div class="row align-items-start">
+		<div class="col text-center" id="beer-pun-generator">
 		<h1 id="heading">Beer Pun Generator</h1>
 		<form class="row g-3" id="inputForm">
-  			<div class="col-auto">
-    			<input type="text" class="form-control" id="inputWord" placeholder="BeerMe">
-  			</div>
-  			<div class="col-auto">
+			<div class="col-auto">
+				<input type="text" class="form-control" id="inputWord" placeholder="BeerMe">
+			</div>
+			<div class="col-auto">
 				<input type="button" class="btn btn-primary" id="btnGetPuns"  value="Get Puns!">
-  			</div>
+			</div>
 		</form>
 
-    </div>
-
-	  <!-- Results -->
-    <div class="col" id="results">
-		<h2 id="result"></h2>
-		<div class="spinner-border" role="status" id="spinner" hidden="true">
-  			<span class="visually-hidden">Loading...</span>
 		</div>
-		<p> Page is slow, TODO </p>
-		<div id="outputData">
-            <!-- fill in by JS -->
+	</div>
+	<!-- Results -->
+	<div class="row align-items-start">
+		<div class="col" id="results">
+			<h2 id="result"></h2>
+			<div class="spinner-border" role="status" id="spinner" hidden="true">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+			<p> Page is slow, TODO </p>
+			<div id="outputData">
+				<!-- fill in by JS -->
+			</div>
 		</div>
-
-
-    </div>
-
-
-
-
-
+	</div>
 </div>
 
+<!--<div id="loading" style="display: none;">
+	<img id="loading-image" src="static/images/spinner.jpeg" alt="Loading..." />
+</div> -->
 
 
 
-	<!--<div id="loading" style="display: none;">
-  		<img id="loading-image" src="static/images/spinner.jpeg" alt="Loading..." />
-	</div> -->
-
-
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<script src="static/script/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="static/script/index.js"></script>
 
 
 
