@@ -39,7 +39,11 @@ btnGetPuns.addEventListener("click", function(){
     var punRequest = new XMLHttpRequest();
     punRequest.open('GET', urlEndpoint);
     punRequest.onload = function(){
+
         var punData = JSON.parse(punRequest.responseText);
+        punData = JSON.stringify(eval('('+punData+')'));
+        punData = JSON.parse(punData);
+        //var punData = JSON.parse(punRequest.responseText);
         console.log(punData);
         var htmlString = `<table class="table">
             <thead>
@@ -63,7 +67,7 @@ btnGetPuns.addEventListener("click", function(){
             }
         htmlString += '</tbody></table>'
         //console.log(htmlString)
-        outputData.innerHTML = htmlString
+        outputData.innerHTML = htmlString;
         };
     punRequest.send();
     } catch(e){
