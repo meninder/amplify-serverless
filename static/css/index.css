@@ -25,15 +25,20 @@
 }
 
 #beer-pun-request {
-    background-color: #A0A0A0;
+    background-color: #C8C8C8;
     padding: 80px 80px;
 
 }
 
 #beer-pun-results {
-    background-color: #A8A8A8;
+    background-color: #D0D0D0;
     padding: 80px 80px;
 
+}
+
+#open-items {
+    background-color: #F5F5F5;
+    padding: 80px 80px;
 }
 
 #heading {
