@@ -62,7 +62,7 @@ btnGetPuns.addEventListener("click", function(){
 
             }
         htmlString += '</tbody></table>'
-        console.log(htmlString)
+        //console.log(htmlString)
         outputData.innerHTML = htmlString
         };
     punRequest.send();

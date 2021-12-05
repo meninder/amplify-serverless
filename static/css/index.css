@@ -24,8 +24,14 @@
   z-index: 100;
 }
 
-#beer-pun-generator {
-    background-color: gray;
+#beer-pun-request {
+    background-color: #A0A0A0;
+    padding: 80px 80px;
+
+}
+
+#beer-pun-results {
+    background-color: #A8A8A8;
     padding: 80px 80px;
 
 }
