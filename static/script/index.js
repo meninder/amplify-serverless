@@ -56,9 +56,9 @@ function hitEndpoint(urlEndpoint){
                 }
             htmlString += '</tbody></table>'
             console.log(htmlString)
-            return htmlString;
         };
         punRequest.send();
+        return htmlString;
         } catch(e){
             htmlString = `<p> fail </p>`
             console.log(htmlString)
@@ -77,15 +77,15 @@ btnGetPuns.addEventListener("click", function(){
     var inputWord = $('#inputWord').val();
     var oldValue = btnGetPuns.value;
     console.log("The input word " + inputWord);
-    urlEndpoint = URLENDPOINT + '?input_word=' + inputWord;
+    var urlEndpoint = URLENDPOINT + '?input_word=' + inputWord;
     console.log(urlEndpoint);
 
 
     //disable
     disable(inputWord);
     setTimeout(function(){
-           htmlString = hitEndpoint(urlEndpoint);
-           console.log(htmlString);
+           var htmlString = hitEndpoint(urlEndpoint);
+           console.log(f'This is the html: {htmlString}');
            enable(oldValue, htmlString);
         }, 4000);
 });
