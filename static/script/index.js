@@ -41,9 +41,12 @@ btnGetPuns.addEventListener("click", function(){
     punRequest.onload = function(){
 
         var punData = JSON.parse(punRequest.responseText);
+        try {
         punData = JSON.stringify(eval('('+punData+')'));
         punData = JSON.parse(punData);
-        //var punData = JSON.parse(punRequest.responseText);
+        } catch {
+            console.log('probably not cached, string came out different')
+        }
         console.log(punData);
         var htmlString = `<table class="table">
             <thead>
