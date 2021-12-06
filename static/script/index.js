@@ -80,12 +80,7 @@ btnGetPuns.addEventListener("click", function(){
     var urlEndpoint = URLENDPOINT + '?input_word=' + inputWord;
     console.log(urlEndpoint);
 
-
-    //disable
-    disable(inputWord);
-    setTimeout(function(){
-           var htmlString = hitEndpoint(urlEndpoint);
-        }, 4000);
-    console.log('This is the html: '+ htmlString);
-    enable(oldValue, htmlString);
+    disable(inputWord); //disable
+    var htmlString = hitEndpoint(urlEndpoint); // get html
+    enable(oldValue, htmlString); //enable and update
 });
