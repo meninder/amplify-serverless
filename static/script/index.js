@@ -1,8 +1,3 @@
-var outputData = document.getElementById("outputData");
-var btnGetPuns = document.getElementById("btnGetPuns");
-var URLENDPOINT = 'https://abofr4qdyd.execute-api.us-east-1.amazonaws.com/default/getPuns';
-var spinner = document.getElementById('spinner');
-
 
 function disable(inputWord){
     console.log('Disable Start');
@@ -22,10 +17,12 @@ function enable(oldValue, htmlString){
     document.getElementById("btnGetPuns").disabled=false;
     document.getElementById("btnGetPuns").value= oldValue;
     document.getElementById("outputData").innerHTML = htmlString;
+    console.log('Enable Complete');
 };
 
 
 function handleHtml(response){
+    console.log('Convert response to HTML table');
     var htmlString = `<table class="table">
             <thead>
                 <tr>
@@ -45,44 +42,57 @@ function handleHtml(response){
                 htmlString += '</td>'
                 htmlString += '</tr>'
 
-                }
-            htmlString += '</tbody></table>'
-            console.log(htmlString)
+                };
+            htmlString += '</tbody></table>';
+    return htmlString;
 };
 
 function hitEndpoint(urlEndpoint){
-    try {
     // Hit endpoint
-        var punRequest = new XMLHttpRequest();
-        punRequest.open('GET', urlEndpoint);
-        punRequest.onload = function(){
-            console.log('in onload')
-            var punData = JSON.parse(punRequest.responseText);
-            console.log('Got pun data: ' + punData);
-        };
-        punRequest.send();
-        htmlString = handleHtml(punRequest);
-        return htmlString;
-        } catch(e){
-            htmlString = `<p> fail </p>`
-            console.log('Exception html string: ' + htmlString)
-            return htmlString;
-        };
+    console.log('In endpoint');
+    const promise = new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', urlEndpoint);
+        xhr.responseType = 'json';
 
+        xhr.onload = () => {
+          console.log("In request onload");
+          if (xhr.status >= 400) {
+            reject(xhr.response);
+          } else {
+            resolve(xhr.response);
+            console.log("The response is : " + xhr.response);
+          }
+        };
+        xhr.onerror = () => {
+            reject('Something went wrong!');
+        };
+        xhr.send();
+    });
+    return promise;
 };
 
-btnGetPuns.addEventListener("click", function(){
+
+
+document.getElementById("btnGetPuns").addEventListener("click", function(){
 
     console.log('Starting Pun Retrieval');
 
     // Get end point based on inputWord
     var inputWord = $('#inputWord').val();
     var oldValue = btnGetPuns.value;
-    console.log("The input word " + inputWord);
-    var urlEndpoint = URLENDPOINT + '?input_word=' + inputWord;
-    console.log(urlEndpoint);
+    console.log("The input word is: " + inputWord);
 
+    var URLENDPOINT = 'https://abofr4qdyd.execute-api.us-east-1.amazonaws.com/default/getPuns';
+    var urlEndpoint = URLENDPOINT + '?input_word=' + inputWord;
+    console.log("The url endpoint is: " + urlEndpoint);
     disable(inputWord); //disable
-    var htmlString = hitEndpoint(urlEndpoint); // get html
-    setTimeout(function() {enable(oldValue, htmlString)}, 15000);
+
+    hitEndpoint(urlEndpoint).then(
+        response => {
+        console.log("Response from endpoint: " + response);
+        htmlString = handleHtml(response)
+        console.log('Done with handleHtml, received: ' + htmlString)
+        enable(oldValue, htmlString);
+        });
 });
