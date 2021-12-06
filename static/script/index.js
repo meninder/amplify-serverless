@@ -85,7 +85,7 @@ btnGetPuns.addEventListener("click", function(){
     disable(inputWord);
     setTimeout(function(){
            var htmlString = hitEndpoint(urlEndpoint);
-           console.log('This is the html: '+ htmlString);
-           enable(oldValue, htmlString);
-        }, 1200);
+        }, 4000);
+    console.log('This is the html: '+ htmlString);
+    enable(oldValue, htmlString);
 });
