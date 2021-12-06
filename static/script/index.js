@@ -67,8 +67,6 @@ function hitEndpoint(urlEndpoint){
 
 };
 
-
-
 btnGetPuns.addEventListener("click", function(){
 
     console.log('Starting Pun Retrieval');
@@ -82,5 +80,5 @@ btnGetPuns.addEventListener("click", function(){
 
     disable(inputWord); //disable
     var htmlString = hitEndpoint(urlEndpoint); // get html
-    enable(oldValue, htmlString); //enable and update
+    setTimeout(function() {enable(oldValue, htmlString)}, 15000);
 });
