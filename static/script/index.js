@@ -25,16 +25,8 @@ function enable(oldValue, htmlString){
 };
 
 
-function hitEndpoint(urlEndpoint){
-    try {
-    // Hit endpoint
-        var punRequest = new XMLHttpRequest();
-        punRequest.open('GET', urlEndpoint);
-        punRequest.onload = function(){
-            console.log('in onload')
-            var punData = JSON.parse(punRequest.responseText);
-            console.log(punData);
-            var htmlString = `<table class="table">
+function handleHtml(response){
+    var htmlString = `<table class="table">
             <thead>
                 <tr>
                     <th scope="col"> Pun </th>
@@ -43,25 +35,37 @@ function hitEndpoint(urlEndpoint){
             </thead>
             <tbody>`
 
-            for (var key in punData) {
+            for (var key in response) {
                 htmlString += '<tr>'
                 htmlString += '<td>'
-                htmlString += punData[key][0]
+                htmlString += response[key][0]
                 htmlString += '</td>'
                 htmlString += '<td>'
-                htmlString += punData[key][1]
+                htmlString += response[key][1]
                 htmlString += '</td>'
                 htmlString += '</tr>'
 
                 }
             htmlString += '</tbody></table>'
             console.log(htmlString)
+};
+
+function hitEndpoint(urlEndpoint){
+    try {
+    // Hit endpoint
+        var punRequest = new XMLHttpRequest();
+        punRequest.open('GET', urlEndpoint);
+        punRequest.onload = function(){
+            console.log('in onload')
+            var punData = JSON.parse(punRequest.responseText);
+            console.log('Got pun data: ' + punData);
         };
         punRequest.send();
+        htmlString = handleHtml(punRequest);
         return htmlString;
         } catch(e){
             htmlString = `<p> fail </p>`
-            console.log(htmlString)
+            console.log('Exception html string: ' + htmlString)
             return htmlString;
         };
 
