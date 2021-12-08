@@ -74,7 +74,9 @@ function hitEndpoint(urlEndpoint){
 
 
 
-document.getElementById("btnGetPuns").addEventListener("click", function(){
+document.getElementById("btnGetPuns").addEventListener("click", function(event){
+
+    var form = document.getElementsByClassName('needs-validation').inputForm;
 
     console.log('Starting Pun Retrieval');
 
