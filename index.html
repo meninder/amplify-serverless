@@ -19,67 +19,21 @@
 </div>
 <!--end of Navigation bar-->
 
-
+<!-- Description -->
 <div class="container-fluid">
-	<!-- Beer Pun Generator -->
+	<!-- Description 1 -->
 	<div class="row align-items-center">
-		<div class="col text-center" id="beer-pun-request">
-		<h1 id="heading">Beer Pun Generator</h1>
-		<form class="row g-3 justify-content-center needs-validation" id="inputForm" novalidate>
-			<div class="col-auto">
-				<input type="text" class="form-control" id="inputWord" placeholder="beer" required>
-				<div class="invalid-feedback">
-        			Please provide a valid word.
-      			</div>
-				<!--<label for="inputWord">Input a single word here</label> -->
-			</div>
-			<div class="col-auto">
-				<input type="button" class="btn btn-primary" id="btnGetPuns"  value="Get Puns!">
-			</div>
-		</form>
+		<div class="col" id="description">
+			<p> The first experiment is a <a href="/pun_generator" class="link-primary"> pun generator.</a> </p>
+		</div>
+	</div>
+	<!-- Description 2 -->
+	<div class="row align-items-center">
+		<div class="col" id="description2">
+			<p> The second experiment is underway, a company <a href="/entity_resolution" class="link-primary"> entity resolution </a> prototype. </p>
+		</div>
+	</div>
 
-		</div>
-	</div>
-	<!-- Results -->
-	<div class="row align-items-center">
-		<div class="col text-center" id="beer-pun-results">
-			<h2 id="result"></h2>
-			<div class="spinner-border" role="status" id="spinner" hidden="true">
-				<span class="visually-hidden">Loading...</span>
-			</div>
-			<h2>Results</h2>
-			<p> Please be patient, page is slow for now </p>
-			<div id="outputData">
-				<!-- fill in by JS -->
-			</div>
-		</div>
-	</div>
-	<!-- Open Items -->
-	<div class="row align-items-center">
-		<div class="col text-center" id="open-items">
-			<h2 id="open-items-h2">Open Items</h2>
-				<ul class="list-group">
-
-					<li class="list-group-item">1. Make front end nicer</li>
-					<li class="list-group-item">2. Error handling</li>
-  					<li class="list-group-item">3. Cognito w/ Login</li>
-  					<li class="list-group-item">4. Make the algorithm better!</li>
-				</ul>
-		</div>
-	</div>
-	<div class="row align-items-center">
-		<div class="col" id="learned-items">
-			<h2 id="learned-items-h2 text-center">Learned Items</h2>
-				<img src="static/images/ServerlessApplicationFlow.svg" class="img-fluid" alt="Diagram">
-				<ul class="list-group">
-					<li class="list-group-item">1. AWS Suite: see diagram </li>
-					<li class="list-group-item">2. Javascript: never worked with it before. In particular,
-						getting the spinner and button disable required understanding promises and async. </li>
-  					<li class="list-group-item">3. Front end: never used bootstrap/css and debugging locally</li>
-				</ul>
-
-		</div>
-	</div>
 </div>
 
 <!--<div id="loading" style="display: none;">

@@ -1,12 +1,12 @@
 
-function disable(inputWord){
+function disable(msg){
     console.log('Disable Start');
-    document.getElementById("outputData").innerHTML = `<p> Waiting to get puns for ${inputWord}</p>`;
+    document.getElementById("outputData").innerHTML = `<p> ${msg} </p>`;
     // spinner
     document.getElementById('spinner').hidden = false;
     // change text in button
-    document.getElementById("btnGetPuns").value = 'Loading...';
-    document.getElementById("btnGetPuns").disabled=true; // disable button
+    document.getElementById("btnGetER").value = 'Loading...';
+    document.getElementById("btnGetER").disabled=true; // disable button
     console.log('Disable Complete');
 };
 
@@ -14,8 +14,8 @@ function disable(inputWord){
 function enable(oldValue, htmlString){
     console.log('Enable Start');
     document.getElementById('spinner').hidden = true;
-    document.getElementById("btnGetPuns").disabled=false;
-    document.getElementById("btnGetPuns").value= oldValue;
+    document.getElementById("btnGetER").disabled=false;
+    document.getElementById("btnGetER").value= oldValue;
     document.getElementById("outputData").innerHTML = htmlString;
     console.log('Enable Complete');
 };
@@ -72,29 +72,31 @@ function hitEndpoint(urlEndpoint){
     return promise;
 };
 
+document.getElementById("btnGetER").addEventListener("click", function(event){
 
+    // var form = document.getElementsByClassName('needs-validation').inputForm;
 
-document.getElementById("btnGetPuns").addEventListener("click", function(event){
-
-    var form = document.getElementsByClassName('needs-validation').inputForm;
-
-    console.log('Starting Pun Retrieval');
+    console.log('Starting ER Algo');
 
     // Get end point based on inputWord
-    var inputWord = $('#inputWord').val();
-    var oldValue = btnGetPuns.value;
-    console.log("The input word is: " + inputWord);
+    var company1 = $('#company1').val();
+    var company2 = $('#company2').val();
+    var oldValue = btnGetER.value;
+    console.log("The company 1 is: " + company1);
+    console.log("The company 2 is: " + company2);
 
-    var URLENDPOINT = 'https://abofr4qdyd.execute-api.us-east-1.amazonaws.com/default/getPuns';
-    var urlEndpoint = URLENDPOINT + '?input_word=' + inputWord;
+    // var URLENDPOINT = 'https://abofr4qdyd.execute-api.us-east-1.amazonaws.com/default/getPuns';
+    var URLENDPOINT = 'url/'
+    var urlEndpoint = URLENDPOINT + '?company1=' + company1 + '&company2=' + company2;
     console.log("The url endpoint is: " + urlEndpoint);
-    disable(inputWord); //disable
+    msg = `Running ER algo on ${company1} and ${company2}`
+    disable(msg); //disable
 
-    hitEndpoint(urlEndpoint).then(
-        response => {
-        console.log("Response from endpoint: " + response);
-        htmlString = handleHtml(response)
-        console.log('Done with handleHtml, received: ' + htmlString)
-        enable(oldValue, htmlString);
-        });
+    //hitEndpoint(urlEndpoint).then(
+    //    response => {
+    //    console.log("Response from endpoint: " + response);
+    //    htmlString = handleHtml(response)
+    //    console.log('Done with handleHtml, received: ' + htmlString)
+    //    enable(oldValue, htmlString);
+    //    });
 });
