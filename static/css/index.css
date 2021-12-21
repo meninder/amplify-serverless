@@ -24,19 +24,19 @@
   z-index: 100;
 }
 
-#beer-pun-request {
+#form-request {
     background-color: #C8C8C8;
     padding: 80px 80px;
 
 }
 
-#beer-pun-results {
+#sls-results {
     background-color: #D0D0D0;
     padding: 80px 80px;
 
 }
 
-#open-items {
+#div-methodology {
     background-color: #F5F5F5;
     padding: 80px 80px;
 }

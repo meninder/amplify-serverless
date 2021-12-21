@@ -8,7 +8,7 @@
 		  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="static/css/index.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Title</title>
+    <title>Pun Generator</title>
 </head>
 <body>
 <!--Navigation bar-->
@@ -19,7 +19,7 @@
 <!-- Beer Pun Generator -->
 <div class="container-fluid">
 	<div class="row align-items-center">
-		<div class="col text-center" id="beer-pun-request">
+		<div class="col text-center" id="form-request">
 		<h1 id="heading">Beer Pun Generator</h1>
 		<form class="row g-3 justify-content-center needs-validation" id="inputForm" novalidate>
 			<div class="col-auto">
@@ -38,7 +38,7 @@
 	</div>
 	<!-- Results -->
 	<div class="row align-items-center">
-		<div class="col text-center" id="beer-pun-results">
+		<div class="col text-center" id="sls-results">
 			<h2 id="result"></h2>
 			<div class="spinner-border" role="status" id="spinner" hidden="true">
 				<span class="visually-hidden">Loading...</span>
@@ -50,30 +50,18 @@
 			</div>
 		</div>
 	</div>
-	<!-- Open Items -->
+	<!-- Methodology -->
 	<div class="row align-items-center">
-		<div class="col text-center" id="open-items">
-			<h2 id="open-items-h2">Open Items</h2>
-				<ul class="list-group">
-
-					<li class="list-group-item">1. Make front end nicer</li>
-					<li class="list-group-item">2. Error handling</li>
-  					<li class="list-group-item">3. Cognito w/ Login</li>
-  					<li class="list-group-item">4. Make the algorithm better!</li>
-				</ul>
-		</div>
-	</div>
-	<div class="row align-items-center">
-		<div class="col" id="learned-items">
-			<h2 id="learned-items-h2 text-center">Learned Items</h2>
-				<img src="static/images/ServerlessApplicationFlow.svg" class="img-fluid" alt="Diagram">
+		<div class="col text-center" id="div-methodology">
+			<h2 id="h2-methodology">Methodology</h2>
+			<p> Describe methodology here</p>
+				<img class="img-fluid w-75" src="static/images/ServerlessApplicationFlow.svg" alt="Diagram">
 				<ul class="list-group">
 					<li class="list-group-item">1. AWS Suite: see diagram </li>
 					<li class="list-group-item">2. Javascript: never worked with it before. In particular,
 						getting the spinner and button disable required understanding promises and async. </li>
   					<li class="list-group-item">3. Front end: never used bootstrap/css and debugging locally</li>
 				</ul>
-
 		</div>
 	</div>
 </div>

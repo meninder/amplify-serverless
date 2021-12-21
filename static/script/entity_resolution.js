@@ -24,7 +24,7 @@ function enable(oldValue, htmlString){
 function handleHtml(result){
     console.log('Convert response to HTML table');
     var probability = result['Probability Match']
-    var htmlString = `<p> The probability of a match is about: ${probability} </p>`
+    var htmlString = `<p> The probability of a match is about: <b>${probability}</b> </p>`
 
     return htmlString;
 };
