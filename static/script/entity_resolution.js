@@ -85,18 +85,17 @@ document.getElementById("btnGetER").addEventListener("click", function(event){
     console.log("The company 1 is: " + company1);
     console.log("The company 2 is: " + company2);
 
-    // var URLENDPOINT = 'https://abofr4qdyd.execute-api.us-east-1.amazonaws.com/default/getPuns';
-    var URLENDPOINT = 'url/'
+    var URLENDPOINT = 'https://xk7q9x3n8e.execute-api.us-east-1.amazonaws.com/dev/lambda_handler';
     var urlEndpoint = URLENDPOINT + '?company1=' + company1 + '&company2=' + company2;
     console.log("The url endpoint is: " + urlEndpoint);
     msg = `Running ER algo on ${company1} and ${company2}`
     disable(msg); //disable
 
-    //hitEndpoint(urlEndpoint).then(
-    //    response => {
-    //    console.log("Response from endpoint: " + response);
-    //    htmlString = handleHtml(response)
-    //    console.log('Done with handleHtml, received: ' + htmlString)
-    //    enable(oldValue, htmlString);
-    //    });
+    hitEndpoint(urlEndpoint).then(
+        response => {
+        console.log("Response from endpoint: " + response);
+        htmlString = handleHtml(response)
+        console.log('Done with handleHtml, received: ' + htmlString)
+        enable(oldValue, htmlString);
+        });
 });
