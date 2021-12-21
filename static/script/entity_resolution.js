@@ -21,29 +21,11 @@ function enable(oldValue, htmlString){
 };
 
 
-function handleHtml(response){
+function handleHtml(result){
     console.log('Convert response to HTML table');
-    var htmlString = `<table class="table">
-            <thead>
-                <tr>
-                    <th scope="col"> Pun </th>
-                    <th scope="col"> Original </th>
-                </tr>
-            </thead>
-            <tbody>`
+    var probability = result['Probability Match']
+    var htmlString = `<p> The probability of a match is about: ${probability} </p>`
 
-            for (var key in response) {
-                htmlString += '<tr>'
-                htmlString += '<td>'
-                htmlString += response[key][0]
-                htmlString += '</td>'
-                htmlString += '<td>'
-                htmlString += response[key][1]
-                htmlString += '</td>'
-                htmlString += '</tr>'
-
-                };
-            htmlString += '</tbody></table>';
     return htmlString;
 };
 
@@ -98,4 +80,10 @@ document.getElementById("btnGetER").addEventListener("click", function(event){
         console.log('Done with handleHtml, received: ' + htmlString)
         enable(oldValue, htmlString);
         });
+    //let result = hitEndpoint(urlEndpoint)
+    //console.log("Result from endpoint: " + result);
+    //htmlString = handleHtml(result)
+    //console.log('Done with handleHtml, received: ' + htmlString)
+    //enable(oldValue, htmlString);
 });
+
