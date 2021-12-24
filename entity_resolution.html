@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- MathJax -->
-	<script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- MathJax -->
+    <script>
 		MathJax = {
 		  tex: {
 			inlineMath: [['$', '$'], ['\\(', '\\)']]
@@ -29,64 +29,77 @@
 
 <!-- Entity Resolution -->
 <div class="container-fluid">
-	<!-- Input -->
-	<div class="row align-items-center">
-		<div class="col text-center" id="form-request">
-		<h1 id="heading">Company Name Entity Resolution</h1>
-		<form class="row g-3 justify-content-center needs-validation" id="inputFormER" novalidate>
-			<div class="col-auto">
-				<input type="text" class="form-control" id="company1" placeholder="J.P. Morgan" required>
-				<!--<label for="inputWord">Input a single word here</label> -->
-			</div>
-			<div class="col-auto">
-				<input type="text" class="form-control" id="company2" placeholder="J.P. Morgan Chase" required>
-				<!--<label for="inputWord">Input a single word here</label> -->
-			</div>
-			<div class="col-auto">
-				<input type="button" class="btn btn-primary" id="btnGetER"  value="Check ER Algo">
-			</div>
-		</form>
+    <!-- Input -->
+    <div class="row align-items-center">
+        <div class="col text-center" id="form-request">
+            <h1 id="heading">Company Name Entity Resolution</h1>
+            <form class="row g-3 justify-content-center needs-validation" id="inputFormER" novalidate>
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="company1" placeholder="J.P. Morgan" required>
+                    <!--<label for="inputWord">Input a single word here</label> -->
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="company2" placeholder="J.P. Morgan Chase" required>
+                    <!--<label for="inputWord">Input a single word here</label> -->
+                </div>
+                <div class="col-auto">
+                    <input type="button" class="btn btn-primary" id="btnGetER" value="Check ER Algo">
+                </div>
+            </form>
 
-		</div>
-	</div>
-	<!-- Results -->
-	<div class="row align-items-center">
-		<div class="col text-center" id="sls-results">
-			<h2 id="result"></h2>
-			<div class="spinner-border" role="status" id="spinner" hidden="true">
-				<span class="visually-hidden">Loading...</span>
-			</div>
-			<h2>Results</h2>
+        </div>
+    </div>
+    <!-- Results -->
+    <div class="row align-items-center">
+        <div class="col text-center" id="sls-results">
+            <h2 id="result"></h2>
+            <div class="spinner-border" role="status" id="spinner" hidden="true">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <h2>Results</h2>
 
-			<div id="outputData">
-				<!-- fill in by JS -->
-			</div>
-		</div>
-	</div>
-	<!-- Methodology -->
-	<div class="row align-items-center">
-		<div class="col" id="div-methodology">
-			<h2 class="text-center" id="h2-methodology">Methodology</h2>
-			<p> The general model is based on <a href="https://norvig.com/spell-correct.html" class="link-primary">Norvig's spelling corrector</a>.
-				The general equation, using Bayes Theorem to disambiguate sub-problems:
-				$$\{c|P(c|\epsilon)>\theta\}\longrightarrow \{c|P(\epsilon|c)P(c)>\theta\}$$
-			</p>
-			<p> There are four parts:</p>
-			<ol>
-				<li><b>Selection Model:</b> $>\theta$.  This is the threshold by which two entities are considered a match.  This should be based on
-			  some training examples of labeled data.</li>
-				<li><b>Candidate Model:</b> $\{c\}$.  Set of candidates.  Picking an appropriate set of candidates is the crux
-				  of the entity resolution methodology.  Too few candidates will result in low recall.  Too many will lead
-				  to $n^2$ computations making it infeasible.  In my current approach, I am only considering two candidates
-			  	that are inputted by the users.</li>
-				<li><b>Error Model:</b> $P(\epsilon|c)$. There are numerous methods to model this.  For example, a machine
-					learning model.  In this case, the model is number of correct divided by length of bigger word.  An
-					imperfect measure to say the least.</li>
-				<li><b>Entity Model:</b> $P(c)$.  Assumed to be 1 for now. When properly implemented, will correct for common/rare
-				instances.</li>
-			</ol>
-		</div>
-	</div>
+            <div id="outputData">
+                <!-- fill in by JS -->
+            </div>
+        </div>
+    </div>
+    <!-- Methodology -->
+    <div class="row align-items-center">
+        <div class="col" id="div-methodology">
+            <h2 class="text-center" id="h2-methodology">Methodology</h2>
+            <p> The general model is based on <a href="https://norvig.com/spell-correct.html" class="link-primary">Norvig's
+                spelling corrector</a>.
+                The general equation, using Bayes Theorem to disambiguate sub-problems:
+                $$\{c|P(c|\epsilon)>\theta\}\longrightarrow \{c|P(\epsilon|c)P(c)>\theta\}$$
+            </p>
+            <p> There are four parts:</p>
+            <ol>
+                <li><b>Selection Model:</b> $>\theta$. This is the threshold by which two entities are considered a
+                    match. This should be based on
+                    some training examples of labeled data.
+                </li>
+                <li><b>Candidate Model:</b> $\{c\}$. Set of candidates. Picking an appropriate set of candidates is the
+                    crux
+                    of the entity resolution methodology. Too few candidates will result in low recall. Too many will
+                    lead
+                    to $n^2$ computations making it infeasible. In my current approach, I am only considering two
+                    candidates
+                    that are inputted by the users.
+                </li>
+                <li><b>Error Model:</b> $P(\epsilon|c)$. There are numerous methods to model this. For example, a
+                    machine
+                    learning model. In this case, the model is number of correct divided by length of bigger word. An
+                    imperfect measure to say the least.
+                </li>
+                <li><b>Entity Model:</b> $P(c)$. Assumed to be 1 for now. When properly implemented, will correct for
+                    common/rare
+                    instances.
+                </li>
+            </ol>
+            <p>I wrote <a href="https://www.meninderpurewal.com/data-meandering/entity-resolution" class="link-primary">this
+                primer</a> for my NYU class.</p>
+        </div>
+    </div>
 </div>
 
 <!-- Navigation bar script -->
