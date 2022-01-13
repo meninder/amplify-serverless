@@ -35,12 +35,13 @@ function handleHtml(result, company1, company2){
     var ticker1_probability = (result[company1]['ticker_probability']*100).toFixed(2)
     var ticker2_probability = (result[company2]['ticker_probability']*100).toFixed(2)
 
-    var htmlString = `<p>`
+    var htmlString = `<p style="font-size:40px">`
     if (match_case==4){
         htmlString += `<b>Not a Match!</b><br>`
     } else {
         htmlString += `<b>Match!</b><br>`
     }
+    htmlString += `</p><p>`
     htmlString += `Case ${match_case} with probability <b>${probability}%</b> <br> </p>`
 
     htmlString += `<p>`
