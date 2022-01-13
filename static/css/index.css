@@ -4,6 +4,10 @@
   transform: scale(.75);
 }
 
+.display-text {
+    margin-left:200px;
+}
+
 #loading {
   position: fixed;
   display: block;
@@ -33,8 +37,8 @@
 #sls-results {
     background-color: #D0D0D0;
     padding: 80px 80px;
-
 }
+
 
 #div-methodology {
     background-color: #F5F5F5;

@@ -49,14 +49,12 @@
     </div>
     <!-- Results -->
     <div class="row align-items-center">
-        <div class="col text-center" id="sls-results">
-            <h2 id="result"></h2>
+        <div class="col" id="sls-results">
+            <h2 class="text-center">Results</h2>
             <div class="spinner-border" role="status" id="spinner" hidden="true">
                 <span class="visually-hidden">Loading...</span>
             </div>
-            <h2>Results</h2>
-
-            <div id="outputData">
+            <div class='display-text' id="outputData">
                 <!-- fill in by JS -->
             </div>
         </div>
@@ -65,7 +63,23 @@
     <div class="row align-items-center">
         <div class="col" id="div-methodology">
             <h2 class="text-center" id="h2-methodology">Methodology</h2>
-            <p> A description of the methodology is <a href="https://www.meninderpurewal.com/2022/01/03/serverless-experiments.html">here</a>.</p>
+            <div class='display-text'>
+                <p> A description of the methodology is <a href="https://www.meninderpurewal.com/2022/01/11/entity-resolution.html">here</a>.</p>
+                <p> Briefly, there are 4 cases: </p>
+                <ul>
+                    <li><u>Case 1</u>: Match.  Algorithm used direct comparison between entities and exceeds a
+                        threshold.</li>
+                    <li><u>Case 2</u>: Match. Inputs match the <i>same</i> key.</li>
+                    <li><u>Case 3</u>: Match. Inputs match a different keys, but keys match same company.</li>
+                    <li><u>Case 4</u>: Non-Match.  Inputs match a different keys and companies.</li>
+                </ul>
+                <p> Examples: </p>
+                <ul>
+                    <li>Case 2: "Facebook" vs "Facebooc" (misspelling)</li>
+                    <li>Case 3: "Facebook" vs "Meta Platforms" (different company name)</li>
+                    <li>Case 3: "Bank of America" vs "BofA" (different expression of company name)</li>
+                    <li>Case 4: "Facebook" vs "Apple"</li>
+                </ul>
         </div>
     </div>
 </div>
@@ -74,7 +88,7 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="static/script/entity_resolution.js"></script>
+<script src="static/script/entity_resolution_enhanced.js"></script>
 <script>
 $(function(){
   $("#nav-placeholder").load("navbar.html");
