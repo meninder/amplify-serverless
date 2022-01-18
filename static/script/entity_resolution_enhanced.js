@@ -25,15 +25,15 @@ function handleHtml(result, company1, company2){
     console.log('Convert response to HTML table');
     var match_case = result['match_case']
     var probability = result['probability'].toFixed(4)*100
-    var key1 = result[company1]['key']
-    var key2 = result[company2]['key']
-    var key1_probability = (result[company1]['key_probability']*100).toFixed(2)
-    var key2_probability = (result[company2]['key_probability']*100).toFixed(2)
+    var key1 = result['candidate1_score']['key_score']['key']
+    var key2 = result['candidate2_score']['key_score']['key']
+    var key1_probability = (result['candidate1_score']['key_score']['score']*100).toFixed(2)
+    var key2_probability = (result['candidate2_score']['key_score']['score']*100).toFixed(2)
 
-    var ticker1 = result[company1]['ticker']
-    var ticker2 = result[company2]['ticker']
-    var ticker1_probability = (result[company1]['ticker_probability']*100).toFixed(2)
-    var ticker2_probability = (result[company2]['ticker_probability']*100).toFixed(2)
+    var ticker1 = result['candidate1_score']['company_score']['company']
+    var ticker2 = result['candidate2_score']['company_score']['company']
+    var ticker1_probability = (result['candidate1_score']['company_score']['score']*100).toFixed(2)
+    var ticker2_probability = (result['candidate2_score']['company_score']['score']*100).toFixed(2)
 
     var htmlString = `<p style="font-size:40px">`
     if (match_case==4){
@@ -94,7 +94,7 @@ document.getElementById("btnGetER").addEventListener("click", function(event){
     console.log("The company 1 is: " + company1);
     console.log("The company 2 is: " + company2);
 
-    var URLENDPOINT = 'https://s2stql1k1h.execute-api.us-east-1.amazonaws.com/dev/lambda_handler';
+    var URLENDPOINT = 'https://s2stql1k1h.execute-api.us-east-1.amazonaws.com/dev/lambda_api_endpoint';
     var urlEndpoint = URLENDPOINT + '?e1=' + company1 + '&e2=' + company2;
     console.log("The url endpoint is: " + urlEndpoint);
     msg = `Running ER algo on ${company1} and ${company2}`
