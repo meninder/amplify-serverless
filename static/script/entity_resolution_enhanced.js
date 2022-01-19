@@ -23,35 +23,39 @@ function enable(oldValue, htmlString){
 
 function handleHtml(result, company1, company2){
     console.log('Convert response to HTML table');
-    var match_case = result['match_case']
-    var probability = result['probability'].toFixed(4)*100
-    var key1 = result['candidate1_score']['key_score']['key']
-    var key2 = result['candidate2_score']['key_score']['key']
-    var key1_probability = (result['candidate1_score']['key_score']['score']*100).toFixed(2)
-    var key2_probability = (result['candidate2_score']['key_score']['score']*100).toFixed(2)
+    if (Object.keys(result).length>0){
+        var match_case = result['match_case']
+        var probability = result['probability'].toFixed(4)*100
+        var key1 = result['candidate1_score']['key_score']['key']
+        var key2 = result['candidate2_score']['key_score']['key']
+        var key1_probability = (result['candidate1_score']['key_score']['score']*100).toFixed(2)
+        var key2_probability = (result['candidate2_score']['key_score']['score']*100).toFixed(2)
 
-    var ticker1 = result['candidate1_score']['company_score']['company']
-    var ticker2 = result['candidate2_score']['company_score']['company']
-    var ticker1_probability = (result['candidate1_score']['company_score']['score']*100).toFixed(2)
-    var ticker2_probability = (result['candidate2_score']['company_score']['score']*100).toFixed(2)
+        var ticker1 = result['candidate1_score']['company_score']['company']
+        var ticker2 = result['candidate2_score']['company_score']['company']
+        var ticker1_probability = (result['candidate1_score']['company_score']['score']*100).toFixed(2)
+        var ticker2_probability = (result['candidate2_score']['company_score']['score']*100).toFixed(2)
 
-    var htmlString = `<p style="font-size:40px">`
-    if (match_case==4){
-        htmlString += `<b>Not a Match!</b><br>`
+        var htmlString = `<p style="font-size:40px">`
+        if (match_case==4){
+            htmlString += `<b>Not a Match!</b><br>`
+        } else {
+            htmlString += `<b>Match!</b><br>`
+        }
+        htmlString += `</p><p>`
+        htmlString += `Case ${match_case} with probability <b>${probability}%</b> <br> </p>`
+
+        htmlString += `<p>`
+        htmlString += `Input entity 1: <u>${company1}</u> matched to key: <u>${key1}</u> with a probability: ${key1_probability}% <br>`
+        htmlString += `Input entity 2: <u>${company2}</u> matched to key: <u>${key2}</u> with a probability: ${key2_probability}% <br>`
+        if ((match_case==3)||(match_case==4)){
+            htmlString += `Input entity 1: <u>${company1}</u> matched to ticker: <u>${ticker1}</u> with probability: ${ticker1_probability}% <br>`
+            htmlString += `Input entity 2: <u>${company2}</u> matched to ticker: <u>${ticker2}</u> with probability: ${ticker2_probability}% <br>`
+        }
+        htmlString += `</p>`
     } else {
-        htmlString += `<b>Match!</b><br>`
+        htmlString = `<p> One or both of the inputs are null. </p>`
     }
-    htmlString += `</p><p>`
-    htmlString += `Case ${match_case} with probability <b>${probability}%</b> <br> </p>`
-
-    htmlString += `<p>`
-    htmlString += `Input entity 1: <u>${company1}</u> matched to key: <u>${key1}</u> with a probability: ${key1_probability}% <br>`
-    htmlString += `Input entity 2: <u>${company2}</u> matched to key: <u>${key2}</u> with a probability: ${key2_probability}% <br>`
-    if ((match_case==3)||(match_case==4)){
-        htmlString += `Input entity 1: <u>${company1}</u> matched to ticker: <u>${ticker1}</u> with probability: ${ticker1_probability}% <br>`
-        htmlString += `Input entity 2: <u>${company2}</u> matched to ticker: <u>${ticker2}</u> with probability: ${ticker2_probability}% <br>`
-    }
-    htmlString += `</p>`
 
     return htmlString;
 };
